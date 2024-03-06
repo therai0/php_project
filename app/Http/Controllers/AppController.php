@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\my_app_data;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Image;
+
 
 class AppController extends Controller
 {
@@ -23,16 +26,24 @@ class AppController extends Controller
     }
     public function storeData(Request $request)
     {
-        Storage::disk('local')->put('ram.jpg', $request->images);
+
         // we can write here validation code here also:
-        // $request->validate([]);
         // in this way we can write the validation
-        /* try {
-            my_app_data::create($request->all());
-            return redirect()->back()->with('message', 'Data has been inserted');
+        try {
+            $fileName=Str::of($request->name)->slug("-") . ".webp";
+            $img = Image::make($request->image)->resize(200,null,function($constraints){
+                $constraints->aspectRatio();
+            })->encode("webp",100);
+            if(Storage::disk('local')->put($fileName, $img)){
+                $request->merge(['images'=>$fileName]);
+                my_app_data::create($request->all());
+                return redirect()->back()->with('message', 'Data has been inserted');
+            }else{    
+                return redirect()->back()->with('error', 'Data couldnt not be inserted');
+            }
         } catch (\Throwable $er) {
-            return redirect()->back()->with('error', 'Something went worng');
-        } */
+            return redirect()->back()->with('error', "$er Something went worng");
+        }
     }
 
     public function delete($id)

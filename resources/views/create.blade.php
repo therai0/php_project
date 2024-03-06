@@ -17,7 +17,7 @@
     @endif
     <form method='post'action="{{route('store')}}" enctype="multipart/form-data">
     {{csrf_field()}}
-        <input type="file" name="images">
+        <input type="file" name="image">
         <input type="text" placeholder='name' name='name'>
         <input type="password" placeholder='password' name='password'>
         <input type="`text`" placeholder='phone number' name='phone'>
