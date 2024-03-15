@@ -22,3 +22,12 @@ Route::post('/insertData',[AppController::class,'storeData'])->name('store');
 Route::get('/delete{id}',[AppController::class,'delete'])->name('delete');
 Route::put('/update{id}', [AppController::class, 'updateData'])->name('update.students');
 Route::get('/getData{id}',[AppController::class,'getData'])->name('getData');
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
