@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media (max-width:1280px) and (min-width:1024px) {
+  
+    .gallary-container {
+        padding: 20px 60px;
+        // background-color:black;
+    }
+    #photos {
+        height: auto;
+        width: 100%;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        flex-wrap: wrap;
+
+    }
+
+    // css for card
+    .photo-card {
+        height: 300px;
+        border-radius: 5px;
+        width: 250px;
+        margin: 20px 20px;
+        box-shadow:0px 0px 2px black;
+    }
+}

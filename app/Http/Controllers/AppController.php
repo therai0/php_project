@@ -12,7 +12,7 @@ use Image;
 class AppController extends Controller
 {
     //
-
+    public $layout="app";
 
     public function index()
     {
@@ -22,11 +22,10 @@ class AppController extends Controller
 
     public function create()
     {
-        return view('create');
+        return view('create')->layouts('app');
     }
     public function storeData(Request $request)
     {
-
         // we can write here validation code here also:
         // in this way we can write the validation
         try {

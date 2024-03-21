@@ -1,8 +1,20 @@
 <?php
-
-use App\Http\Controllers\AppController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\StudentController;
+use App\Http\Livewire\Backend\InfoComponent;
+use App\Http\Livewire\Frontend\FrontendComponent;
+
+
+// backend route for admin
+Route::get('/', FrontendComponent::class)->name('homepage');
+Route::middleware([
+    'auth:sanctum',
+    'verified'
+])->group(function () {
+    Route::get('/infos',InfoComponent::class)->name('backend.infos');
+});
+
+
+// use App\Http\Controllers\StudentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,13 +27,14 @@ use App\Http\Controllers\StudentController;
 |
 */
 
-Route::get('/',[AppController::class,'index']);
+// Route::get('/',[AppController::class,'index']);
 
-Route::get('/insert',[AppController::class,'create'])->name('insert');
-Route::post('/insertData',[AppController::class,'storeData'])->name('store');
-Route::get('/delete{id}',[AppController::class,'delete'])->name('delete');
-Route::put('/update{id}', [AppController::class, 'updateData'])->name('update.students');
-Route::get('/getData{id}',[AppController::class,'getData'])->name('getData');
+// Route::get('/insert',[AppController::class,'create'])->name('insert');
+// Route::post('/insertData',[AppController::class,'storeData'])->name('store');
+// Route::get('/delete{id}',[AppController::class,'delete'])->name('delete');
+// Route::put('/update{id}', [AppController::class, 'updateData'])->name('update.students');
+// Route::get('/getData{id}',[AppController::class,'getData'])->name('getData');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -31,3 +44,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+

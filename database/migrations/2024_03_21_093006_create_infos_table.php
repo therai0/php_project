@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('my_app_datas', function (Blueprint $table) {
+        Schema::create('infos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('password');
-            $table->string('phone'); 
+            $table->string('linkedin_username');
+            $table->string('facebook_username');
+            $table->string('github_username');
+            $table->string('email');
+            $table->string('phone_number');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('my_app_data');
+        Schema::dropIfExists('infos');
     }
 };

@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: "Telex", sans-serif;
+}
+
+@media (max-width: 1280px) and (min-width: 1024px) {
+  #blog-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 50px 0px;
+  }
+  #blog-container #devin {
+    height: auto;
+    width: 40%;
+    overflow: hidden;
+  }
+  #blog-container #devin:hover {
+    cursor: pointer;
+  }
+  #blog-container .devin-head {
+    opacity: 0.8;
+  }
+  #blog-container .devin-head:hover {
+    text-decoration: underline;
+  }
+  #blog-container .about-devin {
+    font-size: 18px;
+    opacity: 0.8;
+    padding: 20px 0px;
+    list-style: 1.5;
+    word-spacing: 5px;
+  }
+}/*# sourceMappingURL=blog.css.map */
